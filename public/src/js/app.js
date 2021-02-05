@@ -47,7 +47,6 @@ function askForNotificationPermission () {
                     icon: '/src/images/icons/app-icon-96x96.png',
                     image: '/src/images/main-image-sm.jpg',
                     badge: '/src/images/main-image-sm.jpg',
-                    tag: 'pwa'
                 } );
             } );
 
