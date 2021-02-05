@@ -13,13 +13,13 @@ if ( 'serviceWorker' in navigator ) {
 }
 
 
-window.addEventListener( 'beforeinstallprompt', ( event ) => {
-    console.log( 'beforeinstallprompt fired' );
-    event.userChoice.then( choice => {
-        let message = choice.outcome === 'dimissed' ? 'User Cancelled' : 'User installed'
-        console.log( message );
-    } );
-} );
+// window.addEventListener( 'beforeinstallprompt', ( event ) => {
+//     console.log( 'beforeinstallprompt fired' );
+//     event.userChoice.then( choice => {
+//         let message = choice.outcome === 'dimissed' ? 'User Cancelled' : 'User installed'
+//         console.log( message );
+//     } );
+// } );
 
 window.addEventListener( 'appinstalled', function ( event ) {
     console.log( 'app installed' );
