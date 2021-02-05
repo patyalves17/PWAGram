@@ -43,7 +43,7 @@ function askForNotificationPermission () {
         if ( result !== 'granted' ) {
             console.log( 'No notification permission granted!' );
         } else {
-            // displayConfirmNotification();
+            displayConfirmNotification();
         }
     } );
 }
