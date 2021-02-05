@@ -4,7 +4,7 @@
   "description": "A complete guide to PWAs. Building a simple Instagram clone.",
   "main": "index.js",
   "scripts": {
-    "start": "server.js"
+    "start": "node server.js"
   },
   "keywords": [
     "pwa",
@@ -20,6 +20,7 @@
     "http-server": "^0.10.0"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "node-static": "^0.7.11"
   }
 }
