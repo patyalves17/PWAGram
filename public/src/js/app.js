@@ -21,8 +21,9 @@ if ( 'serviceWorker' in navigator ) {
 //     } );
 // } );
 
-window.addEventListener( 'appinstalled', function ( event ) {
-    console.log( 'app installed' );
+
+window.addEventListener( 'appinstalled', function () {
+    console.log( 'Thank you for installing our app!' );
 } );
 
 
