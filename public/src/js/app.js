@@ -48,7 +48,12 @@ function askForNotificationPermission () {
         if ( result !== 'granted' ) {
             console.log( 'No notification permission granted!' );
         } else {
-            displayConfirmNotification();
+            let n = new Notification( 'title', {
+                body: 'body text',
+                icon: '/src/images/icons/app-icon-96x96.png',
+                image: '/src/images/main-image-sm.png',
+            } );
+            // displayConfirmNotification();
         }
     } );
 }
