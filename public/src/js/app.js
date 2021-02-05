@@ -48,7 +48,7 @@ function askForNotificationPermission () {
         if ( result !== 'granted' ) {
             console.log( 'No notification permission granted!' );
         } else {
-            let n = new Notification( 'title', {
+            self.registration.showNotification( 'Notification', {
                 body: 'body text',
                 icon: '/src/images/icons/app-icon-96x96.png',
                 image: '/src/images/main-image-sm.png',
