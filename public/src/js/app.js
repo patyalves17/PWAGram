@@ -30,11 +30,16 @@ window.addEventListener( 'appinstalled', function ( event ) {
 
 
 function displayConfirmNotification () {
-    new Notification( 'title', {
-        body: 'body text',
+    ServiceWorkerRegistration.showNotification( 'title', {
+        body: 'body text ServiceWorkerRegistration',
         icon: '/src/images/icons/app-icon-96x96.png',
         image: '/src/images/main-image-sm.png',
     } );
+    // new Notification( 'title', {
+    //     body: 'body text',
+    //     icon: '/src/images/icons/app-icon-96x96.png',
+    //     image: '/src/images/main-image-sm.png',
+    // } );
 }
 
 function askForNotificationPermission () {
