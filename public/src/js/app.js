@@ -19,9 +19,6 @@ window.addEventListener( 'beforeinstallprompt', ( event ) => {
         let message = choice.outcome === 'dimissed' ? 'User Cancelled' : 'User installed'
         console.log( message );
     } );
-    // event.preventDefault();
-    // deferredPrompt = event;
-    // return false;
 } );
 
 window.addEventListener( 'appinstalled', function ( event ) {
@@ -30,6 +27,7 @@ window.addEventListener( 'appinstalled', function ( event ) {
 
 
 function displayConfirmNotification () {
+
     new Notification( 'title', {
         body: 'body text',
         icon: '/src/images/icons/app-icon-96x96.png',
@@ -43,7 +41,11 @@ function askForNotificationPermission () {
         if ( result !== 'granted' ) {
             console.log( 'No notification permission granted!' );
         } else {
-            displayConfirmNotification();
+            navigator.serviceWorker.ready.then( function ( registration ) {
+                registration.showNotification( "Hello world", { body: "Here is the body!" } );
+            } );
+
+            // displayConfirmNotification();
         }
     } );
 }
