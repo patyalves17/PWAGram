@@ -42,7 +42,11 @@ function askForNotificationPermission () {
             console.log( 'No notification permission granted!' );
         } else {
             navigator.serviceWorker.ready.then( function ( registration ) {
-                registration.showNotification( "Hello world", { body: "Here is the body!" } );
+                registration.showNotification( "Hello world", {
+                    body: 'body text',
+                    icon: '/src/images/icons/app-icon-96x96.png',
+                    image: '/src/images/main-image-sm.png',
+                } );
             } );
 
             // displayConfirmNotification();
