@@ -30,7 +30,12 @@ window.addEventListener( 'appinstalled', function ( event ) {
 
 
 function displayConfirmNotification () {
-    new Notification( 'title', {
+    // new Notification( 'title', {
+    //     body: 'body text',
+    //     icon: '/src/images/icons/app-icon-96x96.png',
+    //     image: '/src/images/main-image-sm.png',
+    // } );
+    let n = new Notification( 'title', {
         body: 'body text',
         icon: '/src/images/icons/app-icon-96x96.png',
         image: '/src/images/main-image-sm.png',
