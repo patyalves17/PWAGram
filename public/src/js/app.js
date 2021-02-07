@@ -32,11 +32,14 @@ function displayConfirmNotification () {
     if ( 'serviceWorker' in navigator ) {
 
         navigator.serviceWorker.ready.then( ( registration ) => {
-            registration.showNotification( "Successfuly subscribe'", {
+            registration.showNotification( "Successfuly subscribe", {
                 body: 'body text',
                 icon: '/src/images/icons/app-icon-96x96.png',
                 image: '/src/images/main-image-sm.jpg',
-                badge: '/src/images/main-image-sm.jpg',
+                badge: '/src/images/icons/app-icon-96x96.png',
+                dir: 'ltr',
+                lang: 'en-US',
+                vibrate: [ 100, 50, 200 ]
             } );
         } );
 
