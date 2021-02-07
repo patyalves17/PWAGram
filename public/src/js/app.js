@@ -29,11 +29,15 @@ window.addEventListener( 'appinstalled', function () {
 
 function displayConfirmNotification () {
 
-    new Notification( 'Successfuly subscribe', {
-        body: 'body text',
-        icon: '/src/images/icons/app-icon-96x96.png',
-        image: '/src/images/main-image-sm.png',
+    navigator.serviceWorker.ready.then( function ( registration ) {
+        registration.showNotification( "Successfuly subscribe'", {
+            body: 'body text',
+            icon: '/src/images/icons/app-icon-96x96.png',
+            image: '/src/images/main-image-sm.jpg',
+            badge: '/src/images/main-image-sm.jpg',
+        } );
     } );
+
 }
 
 function askForNotificationPermission () {
@@ -43,15 +47,6 @@ function askForNotificationPermission () {
             console.log( 'No notification permission granted!' );
         } else {
             displayConfirmNotification();
-            navigator.serviceWorker.ready.then( function ( registration ) {
-                registration.showNotification( "Hello world", {
-                    body: 'body text',
-                    icon: '/src/images/icons/app-icon-96x96.png',
-                    image: '/src/images/main-image-sm.jpg',
-                    badge: '/src/images/main-image-sm.jpg',
-                } );
-            } );
-
         }
     } );
 }
