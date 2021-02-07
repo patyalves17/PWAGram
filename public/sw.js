@@ -93,5 +93,11 @@ self.addEventListener( 'notificationclick', ( event ) => {
         notification.close();
     } else {
         console.log( action );
+        notification.close();
     }
+} );
+
+self.addEventListener( 'notificationclose', ( event ) => {
+    console.log( 'notification Was close' );
+
 } );
