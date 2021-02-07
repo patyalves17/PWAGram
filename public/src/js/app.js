@@ -29,15 +29,18 @@ window.addEventListener( 'appinstalled', function () {
 
 function displayConfirmNotification () {
 
-    navigator.serviceWorker.ready.then( function ( registration ) {
-        registration.showNotification( "Successfuly subscribe'", {
-            body: 'body text',
-            icon: '/src/images/icons/app-icon-96x96.png',
-            image: '/src/images/main-image-sm.jpg',
-            badge: '/src/images/main-image-sm.jpg',
-        } );
-    } );
+    if ( 'serviceWorker' in navigator ) {
 
+        navigator.serviceWorker.ready.then( function ( registration ) {
+            registration.showNotification( "Successfuly subscribe'", {
+                body: 'body text',
+                icon: '/src/images/icons/app-icon-96x96.png',
+                image: '/src/images/main-image-sm.jpg',
+                badge: '/src/images/main-image-sm.jpg',
+            } );
+        } );
+
+    }
 }
 
 function askForNotificationPermission () {
