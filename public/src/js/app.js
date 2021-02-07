@@ -39,7 +39,8 @@ function displayConfirmNotification () {
                 badge: '/src/images/icons/app-icon-96x96.png',
                 dir: 'ltr',
                 lang: 'en-US',
-                vibrate: [ 100, 50, 200 ]
+                vibrate: [ 100, 50, 200 ],
+                tag: 'confirm-notification'
             } );
         } );
 
