@@ -31,7 +31,7 @@ function displayConfirmNotification () {
 
     if ( 'serviceWorker' in navigator ) {
 
-        navigator.serviceWorker.ready.then( function ( registration ) {
+        navigator.serviceWorker.ready.then( ( registration ) => {
             registration.showNotification( "Successfuly subscribe'", {
                 body: 'body text',
                 icon: '/src/images/icons/app-icon-96x96.png',
