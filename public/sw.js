@@ -1,5 +1,5 @@
 
-self.registration.showNotification( 'Notification from service Worker', {} );
+// self.registration.showNotification( 'Notification from service Worker', {} );
 
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [

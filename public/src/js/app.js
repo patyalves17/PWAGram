@@ -29,7 +29,7 @@ window.addEventListener( 'appinstalled', function () {
 
 function displayConfirmNotification () {
 
-    new Notification( 'title', {
+    new Notification( 'Successfuly subscribe', {
         body: 'body text',
         icon: '/src/images/icons/app-icon-96x96.png',
         image: '/src/images/main-image-sm.png',
@@ -42,6 +42,7 @@ function askForNotificationPermission () {
         if ( result !== 'granted' ) {
             console.log( 'No notification permission granted!' );
         } else {
+            displayConfirmNotification();
             navigator.serviceWorker.ready.then( function ( registration ) {
                 registration.showNotification( "Hello world", {
                     body: 'body text',
@@ -51,7 +52,6 @@ function askForNotificationPermission () {
                 } );
             } );
 
-            // displayConfirmNotification();
         }
     } );
 }
