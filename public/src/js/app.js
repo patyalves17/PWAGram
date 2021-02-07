@@ -40,7 +40,8 @@ function displayConfirmNotification () {
                 dir: 'ltr',
                 lang: 'en-US',
                 vibrate: [ 100, 50, 200 ],
-                tag: 'confirm-notification'
+                tag: 'confirm-notification',
+                renotify: true
             } );
         } );
 
