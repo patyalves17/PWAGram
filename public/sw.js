@@ -101,3 +101,24 @@ self.addEventListener( 'notificationclose', ( event ) => {
     console.log( 'notification Was close' );
 
 } );
+
+self.addEventListener( 'push', ( event ) => {
+    console.log( 'Push Notification Received', event );
+    var data = { Title: 'New!!!', content: 'Something new happened!' };
+
+    if ( event.data ) {
+        data = JSON.parse( event.data.text() );
+    }
+
+    var options = {
+        body: data.content,
+        icon: '/src/images/icons/app-icon-96x96.png',
+        badge: '/src/images/icons/app-icon-96x96.png',
+    }
+
+    event.waitUntil(
+        self.registration.showNotification( data.title, options )
+    );
+
+
+} );
