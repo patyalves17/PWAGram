@@ -1,3 +1,5 @@
+importScripts( '/src/js/idb.js' );
+importScripts( '/src/js/utility.js' );
 
 // self.registration.showNotification( 'Notification from service Worker', {} );
 
@@ -121,4 +123,47 @@ self.addEventListener( 'push', ( event ) => {
     );
 
 
+} );
+
+self.addEventListener( 'sync', ( event ) => {
+    console.log( '[Service Worker] Background Syncing ', event );
+    if ( event.tag === 'sync-new-post' ) {
+        console.log( '[Service Worker] Syncing new Post ', event );
+        event.waitUntil(
+            readAllData( 'sync-posts' ).then( data => {
+
+
+
+                for ( let dt of data ) {
+
+                    let post = {
+                        id: dt.id,
+                        title: dt.title,
+                        location: dt.location,
+                        image: 'https://firebasestorage.googleapis.com/v0/b/pwagran-5b05e.appspot.com/o/Seto-Great-Bridge-Inland-Sea.jpg?alt=media&token=76dc7407-db49-4412-a70a-dc1f593d3f8e'
+                    };
+
+                    fetch( 'https://us-central1-pwagran-5b05e.cloudfunctions.net/storePostData', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify( post )
+                    } )
+                        .then( function ( res ) {
+                            console.log( 'Sent data', res );
+
+                            if ( res.ok ) {
+                                deleteItemFromData( 'sync-posts', dt.id );
+                            }
+
+                        } )
+                }
+
+
+
+            } )
+        );
+    }
 } );

@@ -77,6 +77,7 @@ function configurePushSub () {
             // we have a subscription
         }
     } ).then( ( newSubs ) => {
+        console.log( newSubs );
         return fetch( 'https://pwagran-5b05e-default-rtdb.firebaseio.com/subscriptions.json', {
             method: 'POST',
             headers: {

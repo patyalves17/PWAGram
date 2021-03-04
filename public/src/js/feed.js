@@ -95,6 +95,30 @@ form.addEventListener( 'submit', ( event ) => {
 
 
   closeCreatePostModal();
-  sendData();
+
+  if ( 'serviceWorker' in navigator && 'SyncManager' in window ) {
+    navigator.serviceWorker.ready.then( sw => {
+      let post = {
+        id: new Date().toISOString(),
+        title: titleInput.value,
+        location: locationInput.value,
+        image: 'https://firebasestorage.googleapis.com/v0/b/pwagran-5b05e.appspot.com/o/Seto-Great-Bridge-Inland-Sea.jpg?alt=media&token=76dc7407-db49-4412-a70a-dc1f593d3f8e'
+      };
+      writeData( 'sync-posts', post ).then( () => {
+        return sw.sync.register( 'sync-new-post' );
+      } )
+        .then( () => {
+          var snackbarContainer = document.querySelector( '#confirmation-toast' );
+          var data = { message: 'Your Post was saved for syncing!' }
+          snackbarContainer.MaterialSnackbar.showSnackbar( data );
+        } )
+        .catch( error => console.log( error ) );
+
+
+    } );
+  } else {
+    sendData();
+  }
+
 
 } );
