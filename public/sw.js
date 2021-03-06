@@ -155,7 +155,11 @@ self.addEventListener( 'sync', ( event ) => {
                             console.log( 'Sent data', res );
 
                             if ( res.ok ) {
-                                deleteItemFromData( 'sync-posts', dt.id );
+                                res.json()
+                                    .then( resData => {
+                                        deleteItemFromData( 'sync-posts', resData.id );
+                                    } )
+
                             }
 
                         } )
