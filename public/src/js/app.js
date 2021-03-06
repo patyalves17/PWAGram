@@ -63,6 +63,7 @@ function configurePushSub () {
         reg = swReg;
         return swReg.pushManager.getSubscription();
     } ).then( ( subs ) => {
+        console.log( 'subs ', subs );
         if ( subs === null ) {
             //create a new subscription
 
@@ -74,10 +75,11 @@ function configurePushSub () {
 
             } );
         } else {
+            console.log( "we have a subscription" );
             // we have a subscription
         }
     } ).then( ( newSubs ) => {
-        console.log( newSubs );
+        console.log( 'newSubs', newSubs );
         return fetch( 'https://pwagran-5b05e-default-rtdb.firebaseio.com/subscriptions.json', {
             method: 'POST',
             headers: {

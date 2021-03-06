@@ -94,8 +94,25 @@ self.addEventListener( 'notificationclick', ( event ) => {
         console.log( 'Confirm was chosen' );
         notification.close();
     } else {
-        console.log( action );
-        notification.close();
+        console.log( 'notificationclick ', action );
+        event.waitUntil(
+            clients.matchAll()
+                .then( clis => {
+                    var client = clis.find( c => {
+                        return c.visibilityState === 'visible';
+                    } )
+
+                    if ( client !== undefined ) {
+                        client.navigate( notification.data.url );
+                        client.focus();
+                    } else {
+                        clients.openWindow( notification.data.url );
+                    }
+                    notification.close();
+
+                } )
+        );
+
     }
 } );
 
@@ -106,7 +123,7 @@ self.addEventListener( 'notificationclose', ( event ) => {
 
 self.addEventListener( 'push', ( event ) => {
     console.log( 'Push Notification Received', event );
-    var data = { Title: 'New!!!', content: 'Something new happened!' };
+    var data = { Title: 'New!!!', content: 'Something new happened!', url: '/' };
 
     if ( event.data ) {
         data = JSON.parse( event.data.text() );
@@ -116,6 +133,9 @@ self.addEventListener( 'push', ( event ) => {
         body: data.content,
         icon: '/src/images/icons/app-icon-96x96.png',
         badge: '/src/images/icons/app-icon-96x96.png',
+        data: {
+            url: data.openUrl
+        }
     }
 
     event.waitUntil(
